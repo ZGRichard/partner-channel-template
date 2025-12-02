@@ -113,6 +113,7 @@ ChannelRouter.post('/oauth/token', async (req: Request, res: Response) => {
 
 // HELPER FUNCTIONS
 function verifyFrontRequest(req: Request, res: Response, next: NextFunction) {
+  console.log('Verifying Front request');
   const timestamp = req.headers['x-front-request-timestamp'];
   const rawBody = JSON.stringify(req.body);
   const baseString = `${timestamp}:${rawBody}`;
