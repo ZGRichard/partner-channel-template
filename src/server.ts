@@ -20,6 +20,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(ChannelRouter);
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 // Only listen when running locally (not on Vercel)
 if (process.env.VERCEL !== '1') {
   app.listen(serverPort, () => {
