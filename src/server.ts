@@ -20,6 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(ChannelRouter);
 
-app.listen(serverPort, () => {
-  console.log(`Express server listening on port ${serverPort}`);
-});
+// Only listen when running locally (not on Vercel)
+if (process.env.VERCEL !== '1') {
+  app.listen(serverPort, () => {
+    console.log(`Express server listening on port ${serverPort}`);
+  });
+}
+
+// Export for Vercel serverless
+export default app;
