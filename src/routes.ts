@@ -21,6 +21,8 @@ ChannelRouter.post('/', async (req: Request, res: Response) => {
     res.send(400).json({ type: 'bad_request', message: 'Unknown type sent to channel' });
   }
 
+  console.log('Body:', req.body);
+
   const webhookHostname = callbackHostname || os.hostname();
   const webhookId = randomString(16);
   const webhookUrl = `${webhookHostname}/front/${webhookId}`;
