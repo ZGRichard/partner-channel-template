@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 export const frontId = process.env.FRONT_ID || '';
 export const frontSecret = process.env.FRONT_SECRET || '';
 export const frontUrl = process.env.FRONT_URL || 'https://api2.frontapp.com';
+export const callbackProtocol = process.env.CALLBACK_PROTOCOL || 'https';
 export const callbackHostname = process.env.VERCEL_URL || process.env.CALLBACK_HOSTNAME || '';
 export const serverPort = process.env.SERVER_PORT || '3000';
 

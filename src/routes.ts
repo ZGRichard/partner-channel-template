@@ -2,7 +2,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { createHmac } from 'crypto';
 import * as os from 'os';
-import { callbackHostname, frontSecret, randomString } from './server';
+import { callbackHostname, callbackProtocol, frontSecret, randomString } from './server';
 
 const ChannelRouter = Router();
 
@@ -25,7 +25,7 @@ ChannelRouter.post('/', async (req: Request, res: Response) => {
 
   const webhookHostname = callbackHostname || os.hostname();
   const webhookId = randomString(16);
-  const webhookUrl = `${webhookHostname}/front/${webhookId}`;
+  const webhookUrl = `${callbackProtocol}://${webhookHostname}/front/${webhookId}`;
   console.log(`Creating webhook with URL ${webhookUrl} for channel with ID ${req.body.payload.channel_id}`);
  /**
   * If you want to sync messages from the external channel into Front, store the channel_id from 
